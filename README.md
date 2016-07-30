@@ -1,8 +1,9 @@
 # EncryptColumn
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/encrypt_column`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+    Encrypt any column with an optional hash (using searchable: true) or conditionally (if: Proc)
+    also has a failsafe (failsafe: true) feature to write to different db column in
+    the database, i.e. <name>_ciphertext. This prevents users from accidentally
+    commenting out the encrypt declaration and writing plaintext to the database.
 
 ## Installation
 
@@ -22,9 +23,36 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the following to the top of your model file
+```ruby
+  include EncryptColumn
+```
 
-## Development
+Then specify the column to be encrypted as so (i.e. encrypt ssn column):
+```ruby
+  encrypt :ssn
+```
+
+To add a hash field for lookup/search purposed (i.e. <column_name>_hash or ssn_hash)
+```ruby
+  encrypt :ssn, searchable: true
+```
+
+To use a failsafe column name to prevent accidental removal of encryption specify "failsafe: true". This will store the data in a column name <column_name>_ciphertext (i.e. ssn_ciphertext) but allow for read/write access by the original column name.
+```ruby
+  encrypt :ssn, failsafe: true
+```
+
+To conditionally encrypt a column you can specify and if statement as so:
+```ruby
+  encrypt :ssn, if: { Rails.env == 'production' }
+```
+
+Use all the options combined, like so:
+```ruby
+  encrypt :ssn, searchable: true, failsafe: true, if: { Rails.env == 'production' }
+```
+
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
@@ -32,7 +60,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/encrypt_column.
+Bug reports and pull requests are welcome on GitHub at https://github.com/danlherman/encrypt_column.
 
 
 ## License

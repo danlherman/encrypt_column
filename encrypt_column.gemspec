@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dan Herman"]
   spec.email         = ["dherman@intratechs.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Easily encrypt columns in your app conditionally and with hashed values for searching}
+  spec.homepage      = "https://github.com/danlherman/encrypt_column"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -31,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_dependency "bcrypt", "~> 3.1"
+  spec.add_dependency "activesupport"
 end

@@ -37,17 +37,17 @@ module EncryptColumn
   end
 
   def encrypt_text(plaintext)
-    ActiveSupport::MessageEncryptor.new(CONFIG[:encryption_key]).encrypt_and_sign(plaintext)
+    ActiveSupport::MessageEncryptor.new(ENCRYPT_COLUMN_CONFIG[:encryption_key]).encrypt_and_sign(plaintext)
   end
 
   def decrypt_cipher(ciphertext)
-    ActiveSupport::MessageEncryptor.new(CONFIG[:encryption_key]).decrypt_and_verify(ciphertext)
+    ActiveSupport::MessageEncryptor.new(ENCRYPT_COLUMN_CONFIG[:encryption_key]).decrypt_and_verify(ciphertext)
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     return ciphertext
   end
 
   def hashed_value(plaintext)
     return nil if plaintext.nil?
-    Digest::SHA2.hexdigest(CONFIG[:hash_salt] + plaintext.to_s)
+    Digest::SHA2.hexdigest(ENCRYPT_COLUMN_CONFIG[:hash_salt] + plaintext.to_s)
   end
 end
