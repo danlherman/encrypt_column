@@ -13,13 +13,16 @@ describe EncryptColumn do
   end
 
   context 'using the failsafe option' do
+
     it 'stores and gets the value using the ssn_ciphertext column' do
       subject = SecureTable.create(ssn: ssn)
+      expect(subject.ssn_ciphertext).not_to be_nil
       expect(subject.ssn).to eql(ssn)
     end
   end
 
   context 'using the searchable option' do
+
     it 'retrieves a record using the hash value' do
       SecureTable.create(ssn: ssn)
       subject = SecureTable.with_ssn(ssn).first
