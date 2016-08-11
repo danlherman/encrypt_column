@@ -1,8 +1,9 @@
 module ClassMethods
-  # Encrypt any column with a hash (searchable: true) or conditionally (if: Proc)
-  # also has a failsafe (failsafe: true) feature to write to different db column in
-  # the database, i.e. <name>_ciphertext. This prevents users from accidentally
-  # commenting out the encrypt declaration and reading/writing plaintext to the db.
+  # Encrypt any column with a hash (searchable: true) or conditionally(if: Proc)
+  # also has a failsafe (failsafe: true) feature to write to a different db column
+  # in the database, i.e. <name>_ciphertext. This prevents users from accidentally
+  # commenting out the encrypt declaration and reading/writing plaintext to the
+  # database.
   def encrypt(name, options = {})
     searchable = options[:searchable] || false
     encrypt_cond = options[:if] || proc { true }
@@ -30,4 +31,3 @@ module ClassMethods
     end if searchable
   end
 end
-

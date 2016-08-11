@@ -7,4 +7,3 @@ class Hashed
     Digest::SHA2.hexdigest(ENV['hash_salt'] + plaintext.to_s)
   end
 end
-
