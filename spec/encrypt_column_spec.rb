@@ -4,8 +4,8 @@ require 'encrypt_column/encrypt'
 describe EncryptColumn do
   let(:ssn) { '123456789' }
   before do
-    ENV['encryption_key'] = '30924789032859043859034590834905843'
-    ENV['hash_salt'] = 'some_salt'
+    ENV['ENCRYPTION_KEY'] = '30924789032859043859034590834905843'
+    ENV['HASH_SALT'] = 'some_salt'
     class SecureTable < ActiveRecord::Base
       encrypt :ssn, failsafe: true, searchable: true
       encrypt :card_number, if: -> (x) { x.card_type == 'credit' }

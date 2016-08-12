@@ -8,7 +8,7 @@ describe Hashed do
   context 'hash salt config specified' do
 
     before do
-      ENV['hash_salt'] = 'somesalt '
+      ENV['HASH_SALT'] = 'somesalt '
     end
 
     it 'returns a hashed value of a text string' do
@@ -16,7 +16,7 @@ describe Hashed do
     end
 
     it 'returns a mismatch hashed value using a bad salt' do
-      ENV['hash_salt'] = 'badsalt '
+      ENV['HASH_SALT'] = 'badsalt '
       expect(subject).not_to eql(hashed_value)
     end
   end
@@ -24,7 +24,7 @@ describe Hashed do
   context 'no hash salt config specified' do
 
     before do
-      ENV['hash_salt'] = nil
+      ENV['HASH_SALT'] = nil
     end
 
     it 'return a hash salt missing config error' do

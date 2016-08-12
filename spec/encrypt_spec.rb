@@ -10,7 +10,7 @@ describe Encrypt do
   context 'encryption key config specified' do
 
     before do
-      ENV['encryption_key'] = '9438290832459034095840398509809sdsfkl;kdsgfl;kdfsgsdsdlsad'
+      ENV['ENCRYPTION_KEY'] = '9438290832459034095840398509809sdsfkl;kdsgfl;kdfsgsdsdlsad'
     end
 
     it 'returns a encrypted value of a text string' do
@@ -20,7 +20,7 @@ describe Encrypt do
 
   context 'too short encryption key specified' do
     before do
-      ENV['encryption_key'] = 'shortkey'
+      ENV['ENCRYPTION_KEY'] = 'shortkey'
     end
 
     it 'return a encryption key too short error' do
@@ -32,7 +32,7 @@ describe Encrypt do
   context 'encryption key config specified' do
 
     before do
-      ENV['encryption_key'] = nil
+      ENV['ENCRYPTION_KEY'] = nil
     end
 
     it 'return a encryption key missing config error' do
