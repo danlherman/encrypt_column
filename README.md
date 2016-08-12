@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/encrypt_column.svg)](https://badge.fury.io/rb/encrypt_column)
+[![Build Status](https://travis-ci.org/danlherman/encrypt_column.svg?branch=master)](https://travis-ci.org/danlherman/encrypt_column)
 
 # EncryptColumn
 
