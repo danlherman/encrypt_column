@@ -28,6 +28,15 @@ Add the following to the top of your model file
   include EncryptColumn
 ```
 
+The gem uses the ENCRYPTION_KEY environment variable for encryption setup:
+```
+  ENV['ENCRYPTION_KEY'] = 'your_encryption_key_goes_here'
+```
+and optionally a HASH_SALT if the searchable option is used.
+```
+  ENV['HASH_SALT'] = 'some_salt'
+```
+
 Then specify the column to be encrypted as so (i.e. encrypt ssn column):
 ```ruby
   encrypt :ssn
