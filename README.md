@@ -1,9 +1,9 @@
 # EncryptColumn
 
-    Encrypt any column with an optional hash (using searchable: true) or conditionally (if: Proc)
-    also has a failsafe (failsafe: true) feature to write to different db column in
-    the database, i.e. <name>_ciphertext. This prevents users from accidentally
-    commenting out the encrypt declaration and writing plaintext to the database.
+Encrypt any column with an optional hash (using searchable: true) or conditionally (if: Proc)
+also has a failsafe (failsafe: true) feature to write to different db column in
+the database, i.e. <name>_ciphertext. This prevents users from accidentally
+commenting out the encrypt declaration and writing plaintext to the database.
 
 ## Installation
 
@@ -43,9 +43,9 @@ To use a failsafe column name to prevent accidental removal of encryption specif
   encrypt :ssn, failsafe: true
 ```
 
-To conditionally encrypt a column you can specify and if statement as so:
+To conditionally encrypt a column you can specify an if statement like so:
 ```ruby
-  encrypt :ssn, if: { Rails.env == 'production' }
+  encrypt :card_number,  if: -> (x) { x.card_type == 'credit' }
 ```
 
 Use all the options combined, like so:
