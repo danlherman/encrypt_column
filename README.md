@@ -2,7 +2,7 @@
 
 Encrypt any column with an optional hash (using searchable: true) or conditionally (if: Proc)
 also has a failsafe (failsafe: true) feature to write to different db column in
-the database, i.e. <name>\_ciphertext. This prevents users from accidentally
+the database, i.e. `<name>_ciphertext`. This prevents users from accidentally
 commenting out the encrypt declaration and writing plaintext to the database.
 
 ## Installation
@@ -33,12 +33,12 @@ Then specify the column to be encrypted as so (i.e. encrypt ssn column):
   encrypt :ssn
 ```
 
-To add a hashed column for lookup/search purposes (i.e. <column_name>\_hash or ssn_hash)
+To add a hashed column for lookup/search purposes (i.e. `<column_name>_hash` or `ssn_hash`)
 ```ruby
   encrypt :ssn, searchable: true
 ```
 
-To use a failsafe column name to prevent accidental removal of encryption specify "failsafe: true". This will store the data in a column name <column_name>\_ciphertext (i.e. ssn\_ciphertext) but allow for read/write access by the original column name.
+To use a failsafe column name to prevent accidental removal of encryption specify "failsafe: true". This will store the data in a column name `<column_name>_ciphertext` (i.e. `ssn_ciphertext`) but allow for read/write access by the original column name.
 ```ruby
   encrypt :ssn, failsafe: true
 ```
