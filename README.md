@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/encrypt_column.svg)](https://badge.fury.io/rb/encrypt_column)
+
 # EncryptColumn
 
 Encrypt any column with an optional hash (using searchable: true) or conditionally (if: Proc)
