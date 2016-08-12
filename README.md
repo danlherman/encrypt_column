@@ -36,6 +36,10 @@ Then specify the column to be encrypted as so (i.e. encrypt ssn column):
 To add a `<Model>.with_<field_name>(<field_value>)` search method (using a hash column named `<column_name>_hash` or `ssn_hash`)
 ```ruby
   encrypt :ssn, searchable: true
+
+Usage like so:
+
+  SecureTable.with_ssn('123456789')
 ```
 
 To use a failsafe column name to prevent accidental removal of encryption specify "failsafe: true". This will store the data in a column name `<column_name>_ciphertext` (i.e. `ssn_ciphertext`) but allow for read/write access by the original column name.
