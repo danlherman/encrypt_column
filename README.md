@@ -23,11 +23,6 @@ Or install it yourself as:
 
 ## Usage
 
-Add the following to the top of your model file
-```ruby
-  include EncryptColumn
-```
-
 The gem uses the ENCRYPTION_KEY environment variable for encryption setup:
 ```
   ENV['ENCRYPTION_KEY'] = 'your_encryption_key_goes_here'
