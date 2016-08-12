@@ -33,7 +33,7 @@ Then specify the column to be encrypted as so (i.e. encrypt ssn column):
   encrypt :ssn
 ```
 
-To add a hashed column for lookup/search purposes (i.e. `<column_name>_hash` or `ssn_hash`)
+To add a `<Model>.with_<field_name>(<field_value>)` search method (using a hash column named `<column_name>_hash` or `ssn_hash`)
 ```ruby
   encrypt :ssn, searchable: true
 ```
