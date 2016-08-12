@@ -7,6 +7,7 @@ also has a failsafe (failsafe: true) feature to write to different db column in
 the database, i.e. `<name>_ciphertext`. This prevents users from accidentally
 commenting out the encrypt declaration and writing plaintext to the database.
 
+
 ## Installation
 
 Add this line to your application's Gemfile:
