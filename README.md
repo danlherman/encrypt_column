@@ -1,6 +1,7 @@
 [![Gem Version](https://badge.fury.io/rb/encrypt_column.svg)](https://badge.fury.io/rb/encrypt_column)
 [![Build Status](https://travis-ci.org/danlherman/encrypt_column.svg?branch=master)](https://travis-ci.org/danlherman/encrypt_column)
 [![Coverage Status](https://coveralls.io/repos/github/danlherman/encrypt_column/badge.svg?branch=master)](https://coveralls.io/github/danlherman/encrypt_column?branch=master)
+[![Issue Count](https://codeclimate.com/github/danlherman/encrypt_column/badges/issue_count.svg)](https://codeclimate.com/github/danlherman/encrypt_column)
 
 # EncryptColumn
 
