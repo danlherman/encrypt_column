@@ -29,7 +29,7 @@ describe Encrypt do
 
   end
 
-  context 'encryption key config specified' do
+  context 'encryption key config not specified' do
 
     before do
       ENV['ENCRYPTION_KEY'] = nil

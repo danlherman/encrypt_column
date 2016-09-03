@@ -3,6 +3,7 @@ require 'encrypt_column'
 require 'sqlite3'
 require 'active_record'
 require 'coveralls'
+
 Coveralls.wear!
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
 ActiveRecord::Schema.define do

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'encrypt_column/encrypt'
 
 describe EncryptColumn do
   let(:ssn) { '123456789' }
@@ -49,8 +48,57 @@ describe EncryptColumn do
     end
   end
 
+  context 'using the key option' do
+
+    before do
+      ENV['ENCRYPTION_KEY'] = nil
+      class SecureTable < ActiveRecord::Base
+        encrypt :ssn, failsafe: true,
+                      key: 'some_encryption_key_specified_in_encrypt_declaration'
+      end
+    end
+
+    it 'encrypts and decrypts' do
+      subject = SecureTable.create(ssn: ssn)
+      expect(subject.ssn).not_to eql(subject[:ssn])
+      expect(subject.ssn).to eql(ssn)
+    end
+  end
+
+  context 'using hash_salt option (no ENV var for HASH_SALT)' do
+    before do
+      ENV['HASH_SALT'] = nil
+    end
+
+    context 'with no hash salt specified' do
+      before do
+        class SecureTable < ActiveRecord::Base
+          encrypt :ssn, searchable: true, failsafe: true
+        end
+      end
+
+      it 'raises a missing hash salt error' do
+        expect{SecureTable.create(ssn: 'something')}.to raise_error('Missing Hash Salt Config')
+      end
+    end
+
+    context 'with hash salt specified inline' do
+      before do
+        class SecureTable < ActiveRecord::Base
+          encrypt :ssn, searchable: true, failsafe: true, hash_salt: 'optionsalt '
+        end
+      end
+
+      it 'returns a hashed value' do
+        hashed_value = Digest::SHA2.hexdigest('optionsalt something')
+        subject = SecureTable.create(ssn: 'something')
+        expect(subject.ssn_hash).to eql(hashed_value)
+      end
+
+    end
+  end
+
   it 'has a version number' do
     expect(EncryptColumn::VERSION).not_to be nil
   end
 end
-

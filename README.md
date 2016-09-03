@@ -29,16 +29,7 @@ Or install it yourself as:
 
 ## Usage
 
-The gem uses the ENCRYPTION_KEY environment variable for encryption setup:
-```
-  ENV['ENCRYPTION_KEY'] = 'your_encryption_key_goes_here'
-```
-and optionally a HASH_SALT if the searchable option is used.
-```
-  ENV['HASH_SALT'] = 'some_salt'
-```
-
-Then specify the column to be encrypted as so (i.e. encrypt ssn column):
+Specify the column to be encrypted as so (i.e. encrypt ssn column):
 ```ruby
   encrypt :ssn
 ```
@@ -65,6 +56,24 @@ To conditionally encrypt a column you can specify an if statement like so:
 Use all the options combined, like so:
 ```ruby
   encrypt :card_number, searchable: true, failsafe: true, if -> (x) { x.card_type == 'credit' }
+```
+
+The gem uses the ENCRYPTION_KEY environment variable for encryption setup:
+```
+  ENV['ENCRYPTION_KEY'] = 'your_encryption_key_goes_here'
+```
+Alternatively, you can specify the encryption key as an option in the encrypt line:
+```
+  encrypt :ssn, key: 'your_encryption_key_goes_here'
+```
+
+and optionally a HASH_SALT if the searchable option is used.
+```
+  ENV['HASH_SALT'] = 'some_salt'
+```
+Or specify the hash salt in the encrypt line:
+```
+  encrypt :ssn, :searchable, hash_salt: 'your_hash_salt_goes_here', key: 'your_encryption_key_goes_here'
 ```
 
 
