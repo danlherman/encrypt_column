@@ -34,7 +34,7 @@ Metrics/AbcSize:
   Max: 25
 
 Metrics/CyclomaticComplexity:
-  Max: 10
+  Max: 12
 
 Metrics/LineLength:
   Max: 100
@@ -42,8 +42,16 @@ Metrics/LineLength:
 # Offense count: 1
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
-  Max: 18
+  Max: 25
 
 # Offense count: 1
 Metrics/PerceivedComplexity:
-  Max: 9
+  Max: 12
+
+Metrics/AbcSize:
+  Max: 28
+
+Style/ClassVars:
+  Exclude:
+    - 'lib/encrypt_column/encrypt_column.rb'
+
