@@ -55,3 +55,6 @@ Style/ClassVars:
   Exclude:
     - 'lib/encrypt_column/encrypt_column.rb'
 
+Style/MultilineIfModifier:
+  Exclude:
+    - 'lib/encrypt_column/encrypt_column.rb'
