@@ -3,7 +3,8 @@ require 'spec_helper'
 describe EncryptColumn do
   let(:ssn) { '123456789' }
   before do
-    ENV['ENCRYPTION_KEY'] = '30924789032859043859034590834905843'
+    # ENV['ENCRYPTION_KEY'] = '30924789032859043859034590834905843'
+    ENV['ENCRYPT_KEY'] = 'f66de9e326b4a7defaa0b1e0f015b140'
     ENV['HASH_SALT'] = 'some_salt'
     class SecureTable < ActiveRecord::Base
       encrypt :ssn, failsafe: true, searchable: true
