@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Easily encrypt columns in your app conditionally and with hashed values for searching}
   spec.homepage      = "https://github.com/danlherman/encrypt_column"
   spec.license       = "MIT"
-  s.post_install_message = %q{
+  spec.post_install_message = %q{
 
   ##### WARNING #######
   New BREAKING encryption algorithm used in this version of encrypt_column.
